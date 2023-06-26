@@ -5,7 +5,6 @@ public class TelescopeInteraction : XRSimpleInteractable
 {
     public Camera playerCamera; // 플레이어 카메라
     public Camera telescopeCamera; // 망원경 카메라
-    public float telescopeFOV = 30f; // 망원경 시점 확대 값
 
     private bool isTelescopeView = false; // 현재 망원경 시점인지 여부
     private Vector3 originalCameraPosition; // 망원경 시점으로 전환하기 전 플레이어 카메라의 위치
@@ -28,11 +27,6 @@ public class TelescopeInteraction : XRSimpleInteractable
         originalCameraPosition = playerCamera.transform.position;
         originalCameraRotation = playerCamera.transform.rotation;
 
-        // 플레이어 카메라를 망원경 카메라 위치와 회전으로 이동
-        playerCamera.transform.SetPositionAndRotation(telescopeCamera.transform.position, telescopeCamera.transform.rotation);
-
-        // 확대 설정
-        telescopeCamera.fieldOfView = telescopeFOV;
         // 다른 환경 설정들...
 
         isTelescopeView = true;
@@ -45,10 +39,6 @@ public class TelescopeInteraction : XRSimpleInteractable
 
         // 플레이어 카메라를 이전 위치와 회전으로 되돌림
         playerCamera.transform.SetPositionAndRotation(originalCameraPosition, originalCameraRotation);
-
-        // 확대 설정 초기화
-        telescopeCamera.fieldOfView = originalTelescopeFOV;
-        // 다른 환경 설정 초기화...
 
         isTelescopeView = false;
     }
@@ -73,10 +63,16 @@ public class TelescopeInteraction : XRSimpleInteractable
 
     private void Update()
     {
-        if (isTelescopeView && Input.GetButtonDown("Fire1"))
+        if (isTelescopeView)
         {
-            // Fire1 버튼이 클릭되면 망원경 시점 종료
-            StopTelescopeView();
+            // 플레이어의 머리 회전 값을 망원경 카메라에 적용
+            telescopeCamera.transform.rotation = playerCamera.transform.rotation;
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                // 컨트롤러의 Fire1 버튼을 눌렀을 때 망원경 시점 종료
+                StopTelescopeView();
+            }
         }
     }
 }

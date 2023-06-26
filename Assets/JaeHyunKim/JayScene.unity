@@ -1529,7 +1529,6 @@ MonoBehaviour:
       m_Calls: []
   playerCamera: {fileID: 573014297}
   telescopeCamera: {fileID: 1233879532}
-  telescopeFOV: 30
 --- !u!54 &1102940646
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1711,14 +1710,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233879531}
-  m_LocalRotation: {x: 0.25397784, y: -0, z: -0, w: 0.96721005}
-  m_LocalPosition: {x: -6.024, y: 12.156, z: -24.614002}
+  m_LocalRotation: {x: 0.24822645, y: -0, z: -0, w: 0.968702}
+  m_LocalPosition: {x: -5.5, y: 27.16, z: -38.81}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1102940650}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 29.426, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.745, y: 0, z: 0}
 --- !u!1 &1251808600
 GameObject:
   m_ObjectHideFlags: 0
