@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class MonorailController : MonoBehaviour
 {
     public List<Transform> waypoints;   // 웨이포인트들을 저장할 리스트
@@ -11,22 +10,42 @@ public class MonorailController : MonoBehaviour
     private int currentWaypointIndex = 0;   // 현재 웨이포인트 인덱스
     private bool isMoving = true;           // 이동 여부
 
-    [SerializeField]
-    private int targetWaypointIndex = 0;     // 이동할 웨이포인트의 인덱스
+    public Animator monorailAnim;
+    public Animator doorAnim;
 
-    public void MoveToWaypointIndex()
+    public void MoveToWaypointIndex(int waypointIndex)
     {
-        if (targetWaypointIndex >= 0 && targetWaypointIndex < waypoints.Count)
+        if (waypointIndex >= 0 && waypointIndex < waypoints.Count)
         {
-            currentWaypointIndex = targetWaypointIndex;
+            currentWaypointIndex = waypointIndex;
+            doorAnim.SetBool("isOpen", false);
             isMoving = true;
+            monorailAnim.SetBool("IsMoving", true);
         }
         else
         {
             Debug.LogError("잘못된 웨이포인트 인덱스입니다.");
             return;
         }
+    }
 
+    public void OpenDoor()
+    {
+        if (isMoving)
+        {
+            return;
+        }
+
+        doorAnim.SetBool("isOpen", true);
+    }
+
+    public void CloseDoor()
+    {
+        doorAnim.SetBool("isOpen", false);
+    }
+
+    private void Update()
+    {
         if (isMoving)
         {
             // 현재 웨이포인트
@@ -36,7 +55,10 @@ public class MonorailController : MonoBehaviour
             if (Vector3.Distance(transform.position, currentWaypointPosition) < 0.1f)
             {
                 isMoving = false;
-                //Debug.Log("도착!");
+                monorailAnim.SetBool("IsMoving", false);
+                doorAnim.SetBool("isOpen", true);
+                Debug.Log("도착!");
+                Invoke("CloseDoor", 5f);
             }
             else
             {
@@ -45,10 +67,5 @@ public class MonorailController : MonoBehaviour
                 transform.position += direction * speed * Time.deltaTime;
             }
         }
-    }
-
-    private void Update()
-    {
-        MoveToWaypointIndex();
     }
 }
