@@ -20,7 +20,5 @@ public class Rocket4 : MonoBehaviour
 
         rig.isKinematic = true;
         cf.enabled = false;
-
-
     }
 }
