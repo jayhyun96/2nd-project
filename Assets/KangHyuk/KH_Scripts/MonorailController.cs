@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MonorailController : MonoBehaviour
 {
@@ -76,6 +77,21 @@ public class MonorailController : MonoBehaviour
         // 소리 중지하기
         audioSource.Stop();
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(this.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(null);
+        }
     }
 
     private void Update()
