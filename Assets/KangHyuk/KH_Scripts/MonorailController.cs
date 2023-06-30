@@ -19,6 +19,8 @@ public class MonorailController : MonoBehaviour
     public AudioClip monorailMove;
     public AudioClip doorOpen;
 
+    public GameObject Player;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -82,7 +84,7 @@ public class MonorailController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(this.transform);
+            Player.transform.SetParent(this.transform);
         }
     }
 
@@ -90,7 +92,7 @@ public class MonorailController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(null);
+            Player.transform.SetParent(null);
         }
     }
 
