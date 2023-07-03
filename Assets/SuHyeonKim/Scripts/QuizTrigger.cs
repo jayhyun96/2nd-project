@@ -9,6 +9,13 @@ public class QuizTrigger : MonoBehaviour
     public Quiz info;
 
     [SerializeField] private QuizSystem quiz;
+    private bool cleared;
+    public bool Cleared { get => cleared; }
+
+    private void Start()
+    {
+        cleared = false;
+    }
 
     public void Trigger()
     {
@@ -24,5 +31,10 @@ public class QuizTrigger : MonoBehaviour
     public void OnMouseDown()
     {
         Trigger();
+    }
+
+    public void SetCleared()
+    {
+        cleared = true;
     }
 }
