@@ -6,6 +6,7 @@ using TMPro;
 
 public class MinigameController : MonoBehaviour
 {
+    public GameObject canvasOnOff;
     public Canvas canvas;
     public Button startButton;
     public Button completeButton;
@@ -17,6 +18,7 @@ public class MinigameController : MonoBehaviour
 
     private void Start()
     {
+        canvasOnOff.SetActive(false);
         timing = false;
         elapsedTime = 0f;
         timerText.text = "00:00"; // 초기 시간을 00:00으로 설정
@@ -36,6 +38,12 @@ public class MinigameController : MonoBehaviour
 
     private void StartTimer()
     {
+        if(timing)
+        {
+            return;
+        }
+        canvasOnOff.SetActive(true);
+
         allTag = false;
 
         Toggle[] toggles = canvas.GetComponentsInChildren<Toggle>();
@@ -53,8 +61,13 @@ public class MinigameController : MonoBehaviour
         CheckToggleGroup();
         if (allTag)
         {
+            canvasOnOff.SetActive(false);
             timing = false;
             RecordTime();
+        }
+        else
+        {
+            Debug.Log("모두 체크안됨");
         }
     }
 
