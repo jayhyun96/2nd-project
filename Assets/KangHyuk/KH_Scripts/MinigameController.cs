@@ -10,7 +10,8 @@ public class MinigameController : MonoBehaviour
     public Canvas canvas;
     public Button startButton;
     public Button completeButton;
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerTextstart;
+    public TextMeshProUGUI timerTextend;
 
     private bool timing;
     private float elapsedTime;
@@ -21,7 +22,8 @@ public class MinigameController : MonoBehaviour
         canvasOnOff.SetActive(false);
         timing = false;
         elapsedTime = 0f;
-        timerText.text = "00:00"; // 초기 시간을 00:00으로 설정
+        timerTextstart.text = "00:00";  //초기 시간을 00:00으로 설정
+        timerTextend.text = "00:00";
 
         startButton.onClick.AddListener(StartTimer);
         completeButton.onClick.AddListener(CompleteGame);
@@ -75,12 +77,13 @@ public class MinigameController : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerTextstart.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerTextend.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void RecordTime()
     {
-        Debug.Log("Time taken: " + timerText.text);
+        Debug.Log("Time taken: " + timerTextend.text);
     }
 
     private void CheckToggleGroup()

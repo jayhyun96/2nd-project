@@ -9,6 +9,7 @@ public class HandUIController : MonoBehaviour
     public GameObject MainUI;
     public GameObject LocalUI;
     public GameObject MonorailUI;
+    public GameObject StampUI;
 
     public Image[] imageArray;
     public TMP_Text[] textArray;
@@ -23,6 +24,12 @@ public class HandUIController : MonoBehaviour
     {
         MainUI.SetActive(false);
         MonorailUI.SetActive(true);
+    }
+
+    public void StampControl()
+    {
+        MainUI.SetActive(false);
+        StampUI.SetActive(true);
     }
 
     public void ChangeInformation(int buttonIndex)
@@ -49,5 +56,6 @@ public class HandUIController : MonoBehaviour
         MainUI.SetActive(true);
         LocalUI.SetActive(false);
         MonorailUI.SetActive(false);
+        StampUI.SetActive(false);
     }
 }
