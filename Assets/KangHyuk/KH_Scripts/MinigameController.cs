@@ -66,6 +66,7 @@ public class MinigameController : MonoBehaviour
             canvasOnOff.SetActive(false);
             timing = false;
             RecordTime();
+            GameManager.Instance.StampClear((int)STAMP.TIMEATTACK);
         }
         else
         {
