@@ -8,7 +8,15 @@ public class QuizTrigger : MonoBehaviour
 
     public Quiz info;
 
+    [Header("퀴즈 시스템을 넣으시오")]
     [SerializeField] private QuizSystem quiz;
+    private bool cleared;
+    public bool Cleared { get => cleared; }
+
+    private void Start()
+    {
+        cleared = false;
+    }
 
     public void Trigger()
     {
@@ -18,11 +26,16 @@ public class QuizTrigger : MonoBehaviour
         if (system.isQuizActivate())
             return;
 
-        system.Begin(info);
+        system.Begin(info, this);
     }
 
-    public void OnMouseDown()
+    public void OnMouseDown() //for mouse
     {
         Trigger();
+    }
+
+    public void SetCleared()
+    {
+        cleared = true;
     }
 }

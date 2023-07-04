@@ -6,12 +6,12 @@ using TMPro;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [Header("각 Canvas 자식의 Dialogue의 텍스트를 넣으시오")]
-    public TextMeshProUGUI txtName;
-    public TextMeshProUGUI txtSentence;
-
     [Header("각 Canvas 자식의 Dialougue를 켜고 끄기위함")]
     [SerializeField] private GameObject dialogueObj;
+
+    [Header("각 Canvas 자식의 Dialogue의 텍스트를 넣으시오")]
+    public TextMeshProUGUI txtName;
+    public TextMeshProUGUI txtSentence;    
 
     Queue<string> sentences = new Queue<string>();
 
@@ -19,13 +19,17 @@ public class DialogueSystem : MonoBehaviour
 
     private string deqSentence;
 
+    private DialogueTrigger lastCalled;
+
     private void Start()
     {
         isTyping = false;
     }
 
-    public void Begin(Dialogue info)
+    public void Begin(Dialogue info, DialogueTrigger dialogueTrigger)
     {
+        lastCalled = dialogueTrigger;
+
         dialogueObj.SetActive(true);
 
         sentences.Clear();
@@ -79,6 +83,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void End()
     {
+        lastCalled.SetRead();
         txtSentence.text = string.Empty;
         dialogueObj.SetActive(false);
     }
