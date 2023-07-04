@@ -6,7 +6,15 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue info;
 
+    [Header("다이얼로그 시스템을 넣으시오")]
     [SerializeField] private DialogueSystem dial;
+    private bool read;
+    public bool Read { get => read; }
+
+    private void Start()
+    {
+        read = false;
+    }
 
     public void Trigger()
     {
@@ -16,11 +24,16 @@ public class DialogueTrigger : MonoBehaviour
         if (system.isDialogueActivate())
             return;
 
-        system.Begin(info);
+        system.Begin(info, this);
     }
 
     public void OnMouseDown()
     {
         Trigger();
+    }
+
+    public void SetRead()
+    {
+        read = true;
     }
 }

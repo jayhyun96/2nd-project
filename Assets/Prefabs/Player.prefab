@@ -9294,7 +9294,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -9699,7 +9699,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -13130,6 +13130,7 @@ MonoBehaviour:
   MainUI: {fileID: 8976356260442264564}
   LocalUI: {fileID: 8976356259375929174}
   MonorailUI: {fileID: 8976356260799147364}
+  StampUI: {fileID: 0}
   imageArray:
   - {fileID: 8976356259908700364}
   - {fileID: 8976356259630601317}
