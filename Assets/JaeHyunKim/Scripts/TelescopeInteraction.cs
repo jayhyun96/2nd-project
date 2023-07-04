@@ -28,7 +28,6 @@ public class TelescopeInteraction : XRSimpleInteractable
         originalCameraRotation = playerCamera.transform.rotation;
 
         // 다른 환경 설정들...
-
         isTelescopeView = true;
 
         GameManager.Instance.StampClear((int)STAMP.OBSERVATION);
