@@ -10,9 +10,15 @@ public class HandUIController : MonoBehaviour
     public GameObject LocalUI;
     public GameObject MonorailUI;
     public GameObject StampUI;
+    [SerializeField] GameObject[] Stamps;
 
     public Image[] imageArray;
     public TMP_Text[] textArray;
+
+    private void Update()
+    {
+        CollectStamp();
+    }
 
     public void LocalInformation()
     {
@@ -30,6 +36,17 @@ public class HandUIController : MonoBehaviour
     {
         MainUI.SetActive(false);
         StampUI.SetActive(true);
+    }
+
+    public void CollectStamp()
+    {
+        for (int i = 0; i < (int)STAMP.SIZE; i++)
+        {
+            if (GameManager.Instance.StampContentsFinish[i])
+            {
+                Stamps[i].SetActive(true);
+            }
+        }
     }
 
     public void ChangeInformation(int buttonIndex)
