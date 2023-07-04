@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class QuizSystem : MonoBehaviour
 {
-    public TextMeshProUGUI txtName;
-    public TextMeshProUGUI txtSentence;
-
+    [Header("각 Canvas 자식의 Quiz를 켜고 끄기위함")]
     [SerializeField] private GameObject quizObj;
+
+    [Header("각 Canvas 자식의 Quiz의 텍스트를 넣으시오")]
+    public TextMeshProUGUI txtName;
+    public TextMeshProUGUI txtSentence;    
 
     Queue<string> sentences = new Queue<string>();
 
@@ -19,6 +21,8 @@ public class QuizSystem : MonoBehaviour
 
     private Quiz answerCheck;
     private string deqSentence;
+
+    private QuizTrigger lastCalled;
 
     private void Init()
     {
@@ -32,8 +36,10 @@ public class QuizSystem : MonoBehaviour
         Init();
     }    
 
-    public void Begin(Quiz info)
+    public void Begin(Quiz info, QuizTrigger quizTrigger)
     {
+        lastCalled = quizTrigger;
+
         Init();
 
         quizObj.SetActive(true);
@@ -104,9 +110,13 @@ public class QuizSystem : MonoBehaviour
 
     public void Result(bool answer)
     {
-        if (!answerCheck.Answer.Equals(answer))
+        if (!answerCheck.Answer.Equals(answer)) //정답이 아니면
         {
             sentences.Dequeue();           
+        }
+        else //정답이면
+        {
+            lastCalled.SetCleared();
         }
 
         Next();
