@@ -93,6 +93,7 @@ public class MonorailController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player.transform.SetParent(null);
+            GameManager.Instance.StampClear((int)STAMP.MONORAIL);
         }
     }
 
