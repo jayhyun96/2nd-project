@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool[] stampContentsFinish;
+    [SerializeField] private bool[] stampContentsFinish; //직접넣는거 아님 직렬화 뺄것
     public bool[] StampContentsFinish { get => stampContentsFinish; }
 
     private float bestTime;
@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
 
     ///모든 퀴즈와 대화를 완료했는지 체크 관리하는 변수들
     //모든 퀴즈 오브젝트 관리
-    [SerializeField] public QuizTrigger[] quizTriggers;
+    [SerializeField] private QuizTrigger[] quizTriggers;
     //모든 벽화 대화 오브젝트 관리
-    [SerializeField] public DialogueTrigger[] dialogueTriggers;
+    [SerializeField] private DialogueTrigger[] dialogueTriggers;
 
     private void Awake()
     {
@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        stampContentsFinish[(int)STAMP.QUIZ] = true; //퀴즈 스탬프 조건 만족
+        //stampContentsFinish[(int)STAMP.QUIZ] = true; //퀴즈 스탬프 조건 만족
+        StampClear((int)STAMP.QUIZ);
     }
 
     private void CheckAllDialogueRead()
@@ -102,13 +103,19 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        stampContentsFinish[(int)STAMP.DIALOGUE] = true;
+        //stampContentsFinish[(int)STAMP.DIALOGUE] = true;
+        StampClear((int)STAMP.DIALOGUE);
     }
 
     private void Update()
     {
         CheckAllQuizClear();
         CheckAllDialogueRead();
+    }
+
+    public void StampClear(int stampIdx)
+    {
+        stampContentsFinish[stampIdx] = true;
     }
 }
 
