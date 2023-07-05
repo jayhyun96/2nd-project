@@ -5189,6 +5189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fd3ad172228854cbbc81d868e346fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandUI: {fileID: 1591969143}
   stampContentsFinish: 
   bestTimeText: {fileID: 649204960}
   quizTriggers: []
