@@ -12,7 +12,6 @@ public class MinigameController : MonoBehaviour
     public Button completeButton;
     public TextMeshProUGUI timerTextstart;
     public TextMeshProUGUI timerTextend;
-    public TextMeshProUGUI bestRecord;
 
     private bool timing;
     private float elapsedTime;

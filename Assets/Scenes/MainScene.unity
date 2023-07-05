@@ -5190,6 +5190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stampContentsFinish: 
+  bestTimeText: {fileID: 649204960}
   quizTriggers: []
   dialogueTriggers: []
 --- !u!4 &1595186942
