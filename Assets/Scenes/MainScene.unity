@@ -6970,6 +6970,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 547674090}
     - target: {fileID: 8976356260442264565, guid: fd4ab320800e3fe458c044bf5fc85b78, type: 3}
+      propertyPath: canvasGroup
+      value: 
+      objectReference: {fileID: 547674092}
+    - target: {fileID: 8976356260442264565, guid: fd4ab320800e3fe458c044bf5fc85b78, type: 3}
       propertyPath: Stamps.Array.size
       value: 5
       objectReference: {fileID: 0}

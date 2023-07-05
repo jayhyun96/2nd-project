@@ -10,6 +10,8 @@ public class HandUIController : MonoBehaviour
     public GameObject LocalUI;
     public GameObject MonorailUI;
     public GameObject StampUI;
+    public CanvasGroup canvasGroup;
+
     [SerializeField] GameObject[] Stamps;
 
     public Image[] imageArray;
