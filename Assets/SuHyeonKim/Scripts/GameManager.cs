@@ -37,8 +37,7 @@ public class GameManager : MonoBehaviour
     public bool[] StampContentsFinish { get => stampContentsFinish; }
 
     private float bestTime;
-    private TextMeshProUGUI bestTimeText; //보여줄 곳 만들어야함
-    public TextMeshProUGUI BestTimeText { get => bestTimeText; }
+    public TextMeshProUGUI bestTimeText; //보여줄 곳 만들어야함
 
     ///모든 퀴즈와 대화를 완료했는지 체크 관리하는 변수들
     //모든 퀴즈 오브젝트 관리
