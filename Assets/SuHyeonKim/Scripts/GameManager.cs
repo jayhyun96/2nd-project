@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+    [SerializeField] private HandUIController HandUI;
 
     [SerializeField] private bool[] stampContentsFinish; //직접넣는거 아님 직렬화 뺄것
     public bool[] StampContentsFinish { get => stampContentsFinish; }
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         CheckAllQuizClear();
         CheckAllDialogueRead();
+        HandUI.CollectStamp();
     }
 
     public void StampClear(int stampIdx)
