@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.312913, g: 0.6289218, b: 0.85830283, a: 1}
+  m_IndirectSpecularColor: {r: 0.3128705, g: 0.6295048, b: 0.85841465, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -285,18 +285,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5900686095097499829, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_Name
-      value: Start-Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686095097499829, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686095097499830, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 33
-      objectReference: {fileID: 0}
     - target: {fileID: 5900686096101557195, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -385,120 +373,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minigame-timer(end Point)
       objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835488, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_Color.b
-      value: 0.03208439
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835488, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_Color.g
-      value: 0.03208439
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835488, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9716981
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835501, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
+    - target: {fileID: 8175026495784865776, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
       propertyPath: m_Name
-      value: Stop-Button
+      value: Best Record
       objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835502, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 23.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 934732956}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096128835503, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096597206161, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
+    - target: {fileID: 9126309648425825423, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
       propertyPath: m_Name
-      value: Time
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096597206162, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096597206162, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -19.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096597206163, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 9d1caa7da9710eb48bd853e7624538e8, type: 2}
-    - target: {fileID: 5900686096597206163, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 7891366571376829197, guid: 9d1caa7da9710eb48bd853e7624538e8, type: 2}
-    - target: {fileID: 5900686096597206163, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686096597206163, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_text
-      value: STOP
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 9d1caa7da9710eb48bd853e7624538e8, type: 2}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 7891366571376829197, guid: 9d1caa7da9710eb48bd853e7624538e8, type: 2}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_characterSpacing
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900686097061489631, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: Besttime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
+--- !u!114 &68647888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 825018203187638511, guid: 23baa433c87eb8d42a32c61d84f85281, type: 3}
+  m_PrefabInstance: {fileID: 68647887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &81949352
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,6 +6215,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1745583789}
+    - target: {fileID: 1105288545552617997, guid: 9fe067e558ba0f6448a25bd0ab76fc23, type: 3}
+      propertyPath: BestRecord
+      value: 
+      objectReference: {fileID: 68647888}
     - target: {fileID: 1105288545552617997, guid: 9fe067e558ba0f6448a25bd0ab76fc23, type: 3}
       propertyPath: startButton
       value: 
