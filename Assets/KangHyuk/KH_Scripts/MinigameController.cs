@@ -12,11 +12,10 @@ public class MinigameController : MonoBehaviour
     public Button completeButton;
     public TextMeshProUGUI timerTextstart;
     public TextMeshProUGUI timerTextend;
-    public TextMeshProUGUI BestRecord;
+    public TextMeshProUGUI bestRecord;
 
     private bool timing;
     private float elapsedTime;
-    private float firstbestrecord = 99f;
     private bool allTag;
 
     private void Start()
@@ -26,7 +25,6 @@ public class MinigameController : MonoBehaviour
         elapsedTime = 0f;
         timerTextstart.text = "00:00";  //초기 시간을 00:00으로 설정
         timerTextend.text = "00:00";
-        BestRecord = GameManager.Instance.BestTimeText;
 
         startButton.onClick.AddListener(StartTimer);
         completeButton.onClick.AddListener(CompleteGame);
@@ -43,6 +41,7 @@ public class MinigameController : MonoBehaviour
 
     private void StartTimer()
     {
+        
         if(timing)
         {
             return;
@@ -87,11 +86,8 @@ public class MinigameController : MonoBehaviour
 
     private void RecordTime()
     {
-        if (elapsedTime < firstbestrecord)
-        {
-            BestRecord.text = timerTextend.text;
-        }
-        Debug.Log("Time taken: " + timerTextend.text);
+        GameManager.Instance.RenewalBestTime(elapsedTime);
+        elapsedTime = 0f;
     }
 
     private void CheckToggleGroup()
