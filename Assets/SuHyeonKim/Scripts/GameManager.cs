@@ -112,7 +112,12 @@ public class GameManager : MonoBehaviour
     {
         CheckAllQuizClear();
         CheckAllDialogueRead();
-        HandUI.CollectStamp();
+
+        if(HandUI != null)
+        {
+            HandUI.CollectStamp();
+        }
+        
     }
 
     public void StampClear(int stampIdx)
