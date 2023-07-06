@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3635148290103723217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3635148290103723219}
+  - component: {fileID: 3635148290103723220}
+  m_Layer: 0
+  m_Name: LightMngr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3635148290103723219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635148290103723217}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &3635148290103723220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635148290103723217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e214843e5073d5f42912d8a93f40edf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayBox: {fileID: 2100000, guid: 123caa41e84e041d0bd65bb3ae888dd1, type: 2}
+  noonBox: {fileID: 2100000, guid: d65195292ca45984b95ed0cdef492406, type: 2}
+  nightBox: {fileID: 2100000, guid: f8a60d169ab8a46b09c9b01a3e51601f, type: 2}
+  lightPosition: {x: 0, y: 80, z: 0}
+  lightRotation: {x: 50, y: -30, z: 0}
+  degreePerTime: 1
+  rotateDealy: 0.03
+  noonboxExposure: 4
+  dayToNoonboxTargetLightDegree: 5
+  dayToNoonboxChaneDegree: 40
+  dayboxExposure: 4
+  nightToDayboxProcessTime: 1.4
+  nightToDayboxChaneTime: 1
+  nightboxExposure: 0
+  noonToNightboxProcessTime: 1.75
+  noonToNightboxChaneTime: 0.04
+  startRotationY: 0
+  rotateTimer: 0
+  isRotate: 0
+  rotationSwitch: 0
