@@ -13131,6 +13131,7 @@ MonoBehaviour:
   LocalUI: {fileID: 8976356259375929174}
   MonorailUI: {fileID: 8976356260799147364}
   StampUI: {fileID: 0}
+  Stamps: []
   imageArray:
   - {fileID: 8976356259908700364}
   - {fileID: 8976356259630601317}
