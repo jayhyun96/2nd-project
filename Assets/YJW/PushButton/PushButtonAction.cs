@@ -41,23 +41,23 @@ public class PushButtonAction : MonoBehaviour
 
     IEnumerator PushButton()
     {
-        if (transform.position == popPosition && isPick == false)
+        if (transform.localPosition == popPosition && isPick == false)
         {
             isPick = true;
             while (transform.localPosition != pickPosition)
             {
                 yield return new WaitForSeconds(0.01f);
-                this.transform.position = Vector3.MoveTowards(transform.localPosition, pickPosition, buttonSpeed * Time.deltaTime);
+                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, pickPosition, buttonSpeed * Time.deltaTime);
                 //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
             }
         }
-        else if(transform.position == pickPosition && isPick == false)
+        else if(transform.localPosition == pickPosition && isPick == false)
         {
             while (transform.localPosition != popPosition)
             {
                 isPick = true;
                 yield return new WaitForSeconds(0.01f);
-                this.transform.position = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
+                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
                 //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
             }
         }
