@@ -30,9 +30,13 @@ public class LightMngr : MonoBehaviour
     [Tooltip("DirectionalLight와 Skybox의 회전속도. 높을수록 큰각도를 돌아 프레임이낮고 낮을수록 부드러움")]
     [SerializeField, Range(0, 5f)] private float degreePerTime = 1f;
 
-    [Header("Directional Light 로테이션 갱신 딜레이 |  default : 0.03f")]
+    //[Header("Directional Light 로테이션 갱신 딜레이 |  default : 0.03f")]
+    //[Tooltip("초당 갱신주기를 설정. 높을수록 느리고, 낮을수록 빠름")]
+    //[SerializeField, Range(0, 10f)] private float rotateDealy = 0.03f;
+    private float rotateDealy = 0f;
+    [Header("Directional Light 로테이션 갱신 딜레이 |  default : 2.4f")]
     [Tooltip("초당 갱신주기를 설정. 높을수록 느리고, 낮을수록 빠름")]
-    [SerializeField, Range(0, 0.1f)] private float rotateDealy = 0.03f;
+    [SerializeField, Range(0, 10f)] private float rotateDealySpeed = 0.03f;
 
 
     [Space(20)]
@@ -96,7 +100,7 @@ public class LightMngr : MonoBehaviour
     }
     private void Update()
     {
-        // curRotationX = transform.eulerAngles.x;
+        // curRotationX = transform.eulerAngles.x; 
     }
     public void StartCo()
     {
@@ -133,6 +137,7 @@ public class LightMngr : MonoBehaviour
         dayBox.SetFloat("_Exposure", dayboxExposure);
         while (rotateTimer < nightToDayboxProcessTime)
         {
+            rotateDealy = rotateDealySpeed * Time.deltaTime;
             float skyboxExposure = RenderSettings.skybox.GetFloat("_Exposure");
 
             if (skyboxExposure > dayboxExposure - 1f)
@@ -161,7 +166,7 @@ public class LightMngr : MonoBehaviour
                     RenderSettings.skybox.SetFloat("_Exposure", skyboxExposure);
                 }
             }
-            rotateTimer += Time.deltaTime;
+            rotateTimer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(rotateDealy);
             this.transform.Rotate(Vector3.left * degreePerTime);
             float skyboxRotate = RenderSettings.skybox.GetFloat("_Rotation");
@@ -177,11 +182,11 @@ public class LightMngr : MonoBehaviour
 
     private IEnumerator TurnNoonLight()
     {
-
+        
         noonBox.SetFloat("_Exposure", noonboxExposure);
         while (transform.eulerAngles.x > dayToNoonboxTargetLightDegree)
         {
-
+            rotateDealy = rotateDealySpeed * Time.deltaTime;
             float skyboxExposure = RenderSettings.skybox.GetFloat("_Exposure");
 
             if (skyboxExposure > noonboxExposure -1)
@@ -229,6 +234,7 @@ public class LightMngr : MonoBehaviour
 
         while (rotateTimer < noonToNightboxProcessTime)
         {
+            rotateDealy = rotateDealySpeed * Time.deltaTime;
             float skyboxExposure = RenderSettings.skybox.GetFloat("_Exposure");
 
             if (skyboxExposure < 0.05f)
@@ -258,7 +264,7 @@ public class LightMngr : MonoBehaviour
                 }
             }
 
-            rotateTimer += Time.deltaTime;
+            rotateTimer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(rotateDealy);
             this.transform.Rotate(Vector3.left * degreePerTime);
             float skyboxRotate = RenderSettings.skybox.GetFloat("_Rotation");
