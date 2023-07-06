@@ -64,7 +64,7 @@ public class LightMngr : MonoBehaviour
     [Header("밤 skybox 노출 값 | default : 0f")]
     [Tooltip("NightSkybox의 노출값을 설정. 높을수록 밝고 낮을 수록 어두움")]
     [SerializeField, Range(0, 8)] private float nightboxExposure = 0f;
-    [Header("밤 skybox 변화 과정 시간 | default : 0.75f")]
+    [Header("밤 skybox 변화 과정 시간 | default : 1.45f")]
     [Tooltip("Skybox가 전환되는 총 시간 설정")]
     [SerializeField, Range(0, 3f)] private float noonToNightboxProcessTime = 0f;
     [Header("밤 skybox 전환 타이밍 | default : 0.04f")]
