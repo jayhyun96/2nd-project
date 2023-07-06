@@ -5,15 +5,14 @@ public class TelescopeInteraction : XRSimpleInteractable
 {
     public Camera playerCamera; // 플레이어 카메라
     public Camera telescopeCamera; // 망원경 카메라
+    public GameObject[] BuildingInfo;
 
     private bool isTelescopeView = false; // 현재 망원경 시점인지 여부
     private Vector3 originalCameraPosition; // 망원경 시점으로 전환하기 전 플레이어 카메라의 위치
     private Quaternion originalCameraRotation; // 망원경 시점으로 전환하기 전 플레이어 카메라의 회전
-    private float originalTelescopeFOV; // 원래 망원경 시점의 확대 값
 
     private void Start()
     {
-        originalTelescopeFOV = telescopeCamera.fieldOfView;
         telescopeCamera.enabled = false; // 시작 시 망원경 카메라를 비활성화
         // 초기화 로직 등...
     }
@@ -62,6 +61,7 @@ public class TelescopeInteraction : XRSimpleInteractable
         }
     }
 
+
     private void Update()
     {
         if (isTelescopeView)
@@ -73,6 +73,21 @@ public class TelescopeInteraction : XRSimpleInteractable
             {
                 // 컨트롤러의 Fire1 버튼을 눌렀을 때 망원경 시점 종료
                 StopTelescopeView();
+            }
+        }
+
+        if (telescopeCamera.enabled)
+        {
+            for (int i =0; i < BuildingInfo.Length; i++)
+            {
+                BuildingInfo[i].SetActive(true);
+            }
+        }
+        else if (!telescopeCamera.enabled)
+        {
+            for (int i = 0; i < BuildingInfo.Length; i++)
+            {
+                BuildingInfo[i].SetActive(false);
             }
         }
     }
