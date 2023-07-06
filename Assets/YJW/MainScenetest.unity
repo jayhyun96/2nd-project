@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e11f5b66aad75483b8cd16ee18a0c917, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 123caa41e84e041d0bd65bb3ae888dd1, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.31570247, g: 0.63438326, b: 0.8656542, a: 1}
+  m_IndirectSpecularColor: {r: 0.18940127, g: 0.53691715, b: 0.84188634, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2595,9 +2595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e214843e5073d5f42912d8a93f40edf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayBox: {fileID: 2100000, guid: e11f5b66aad75483b8cd16ee18a0c917, type: 2}
+  dayBox: {fileID: 2100000, guid: 123caa41e84e041d0bd65bb3ae888dd1, type: 2}
   noonBox: {fileID: 2100000, guid: d65195292ca45984b95ed0cdef492406, type: 2}
-  nightBox: {fileID: 2100000, guid: ab675e6698bde46fd87143fb0d7580cb, type: 2}
+  nightBox: {fileID: 2100000, guid: f8a60d169ab8a46b09c9b01a3e51601f, type: 2}
   lightPosition: {x: 0, y: 80, z: 0}
   lightRotation: {x: 50, y: -30, z: 0}
   degreePerTime: 1
@@ -2609,7 +2609,7 @@ MonoBehaviour:
   nightToDayboxProcessTime: 1.4
   nightToDayboxChaneTime: 1
   nightboxExposure: 0
-  noonToNightboxProcessTime: 0.75
+  noonToNightboxProcessTime: 1.75
   noonToNightboxChaneTime: 0.04
   startRotationY: 0
   rotateTimer: 0
@@ -4594,7 +4594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974870699892023409, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7974870699892023409, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
       propertyPath: blendDistance
