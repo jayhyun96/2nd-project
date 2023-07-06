@@ -166,7 +166,7 @@ public class LightMngr : MonoBehaviour
                     RenderSettings.skybox.SetFloat("_Exposure", skyboxExposure);
                 }
             }
-            rotateTimer += Time.deltaTime;
+            rotateTimer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(rotateDealy);
             this.transform.Rotate(Vector3.left * degreePerTime);
             float skyboxRotate = RenderSettings.skybox.GetFloat("_Rotation");
@@ -264,7 +264,7 @@ public class LightMngr : MonoBehaviour
                 }
             }
 
-            rotateTimer += Time.deltaTime;
+            rotateTimer += Time.fixedDeltaTime;
             yield return new WaitForSeconds(rotateDealy);
             this.transform.Rotate(Vector3.left * degreePerTime);
             float skyboxRotate = RenderSettings.skybox.GetFloat("_Rotation");
