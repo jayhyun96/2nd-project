@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class LightMngr : MonoBehaviour
@@ -15,6 +16,10 @@ public class LightMngr : MonoBehaviour
     [SerializeField] private Material noonBox = null;
     [Tooltip("밤으로 지정할 마테리얼을 넣으시오.")]
     [SerializeField] private Material nightBox = null;
+
+    [Space(20)]
+    [Header("AddListener")]
+    [SerializeField] private TelescopeInteraction telescopeInteraction = null;
 
     [Space(20)]
 
@@ -97,12 +102,18 @@ public class LightMngr : MonoBehaviour
         dayBox.SetFloat("_Exposure", 1);
         noonBox.SetFloat("_Exposure", 1);
         nightBox.SetFloat("_Exposure", 1);
+
+        telescopeInteraction.selectEntered.AddListener(StartCo);
     }
     private void Update()
     {
         // curRotationX = transform.eulerAngles.x; 
     }
     public void StartCo()
+    {
+        Coroutine co = StartCoroutine(RotateLight());
+    }
+    public void StartCo(SelectEnterEventArgs args)
     {
         Coroutine co = StartCoroutine(RotateLight());
     }
