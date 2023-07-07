@@ -62,7 +62,7 @@ public class MinigameController : MonoBehaviour
 
     private void StartTimer(SelectEnterEventArgs args)
     {
-
+        Debug.Log("게임시작");
         if (timing)
         {
             return;
@@ -83,6 +83,7 @@ public class MinigameController : MonoBehaviour
 
     private void CompleteGame(SelectEnterEventArgs args)
     {
+        Debug.Log("게임종료");
         CheckToggleGroup();
         if (allTag)
         {
