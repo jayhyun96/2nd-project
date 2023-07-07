@@ -58,23 +58,24 @@ public class MinigameController : MonoBehaviour
         }
 
 
+
+
         elapsedTime += Time.deltaTime;
         UpdateTimerText();
-
-
-
 
     }
 
     private void StartTimer(SelectEnterEventArgs args)
     {
-        if (pushStartButtonAction.isOn)
-            return;
 
         if (timing)
         {
             return;
         }
+
+        if (pushStartButtonAction.isOn)
+            return;
+
         canvasOnOff.SetActive(true);
 
         allTag = false;

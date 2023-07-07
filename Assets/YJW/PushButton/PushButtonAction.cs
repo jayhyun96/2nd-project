@@ -47,15 +47,16 @@ public class PushButtonAction : MonoBehaviour
 
         if (!isPushing)
         {
+            
             isPushing = true;
             if (transform.localPosition == popPosition)
             {
                 Coroutine pushOn = StartCoroutine(PushOn());
             }
-            else if (transform.localPosition == pickPosition)
-            {
-                Coroutine pushOff = StartCoroutine(PushOff());
-            }
+            //else if (transform.localPosition == pickPosition)
+            //{
+            //    Coroutine pushOff = StartCoroutine(PushOff());
+            //}
         }
     }
 
@@ -69,6 +70,7 @@ public class PushButtonAction : MonoBehaviour
             //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
         }
         isPushing = false;
+        isOn = true;
     }
 
     public IEnumerator PushOff()
@@ -81,6 +83,7 @@ public class PushButtonAction : MonoBehaviour
             //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
         }
         isPushing = false;
+        isOn = false;
     }
 
     //IEnumerator PushButton()
