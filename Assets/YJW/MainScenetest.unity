@@ -2688,7 +2688,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 713666665}
         m_TargetAssemblyTypeName: PushButtonAction, Assembly-CSharp
-        m_MethodName: StartCo
+        m_MethodName: PushButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5717,7 +5717,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1460535499}
         m_TargetAssemblyTypeName: PushButtonAction, Assembly-CSharp
-        m_MethodName: StartCo
+        m_MethodName: PushButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
