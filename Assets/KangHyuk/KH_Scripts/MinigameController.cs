@@ -49,16 +49,19 @@ public class MinigameController : MonoBehaviour
     {
         if (!timing)
         {
-
+            if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+            {
+                StartCoroutine(pushStartButtonAction.PushOff());
+                StartCoroutine(pushCompleteButtonAction.PushOff());
+            }
             return;
         }
 
-
-
+        if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+            StartCoroutine(pushCompleteButtonAction.PushOff());
 
         elapsedTime += Time.deltaTime;
         UpdateTimerText();
-
     }
 
     private void StartTimer(SelectEnterEventArgs args)
@@ -71,6 +74,8 @@ public class MinigameController : MonoBehaviour
 
         if (pushStartButtonAction.isOn)
             return;
+
+        StartCoroutine(pushCompleteButtonAction.PushOff());
 
         canvasOnOff.SetActive(true);
 
@@ -88,17 +93,11 @@ public class MinigameController : MonoBehaviour
 
     private void CompleteGame(SelectEnterEventArgs args)
     {
-        if (pushCompleteButtonAction.isOn || !pushStartButtonAction.isOn)
-            return;
 
         CheckToggleGroup();
+
         if (allTag)
         {
-            if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
-            {
-                StartCoroutine(pushStartButtonAction.PushOff());
-                StartCoroutine(pushCompleteButtonAction.PushOff());
-            }
             canvasOnOff.SetActive(false);
             timing = false;
             RecordTime();
@@ -106,6 +105,7 @@ public class MinigameController : MonoBehaviour
         }
         else
         {
+            StartCoroutine(pushCompleteButtonAction.PushOff());
             Debug.Log("모두 체크안됨");
         }
     }

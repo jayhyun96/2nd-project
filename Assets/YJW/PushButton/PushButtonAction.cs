@@ -53,10 +53,10 @@ public class PushButtonAction : MonoBehaviour
             {
                 Coroutine pushOn = StartCoroutine(PushOn());
             }
-            //else if (transform.localPosition == pickPosition)
-            //{
-            //    Coroutine pushOff = StartCoroutine(PushOff());
-            //}
+            else if (transform.localPosition == pickPosition)
+            {
+                Coroutine pushOff = StartCoroutine(PushOff());
+            }
         }
     }
 
