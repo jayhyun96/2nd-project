@@ -27,7 +27,7 @@ public class PushButtonAction : MonoBehaviour
     [SerializeField] private bool isPushing = false;
     public bool isOn = false;
 
-     
+
     private void Awake()
     {
         popPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
@@ -35,39 +35,83 @@ public class PushButtonAction : MonoBehaviour
 
     }
 
-    public void StartCo()
-    {
-        Coroutine co = StartCoroutine(PushButton());
-    }
+    //public void StartCo()
+    //{
+    //    Coroutine co = StartCoroutine(PushButton());
+    //}
 
-
-    IEnumerator PushButton()
+    public void PushButton()
     {
-        isOn = !(isOn);
-        if (transform.localPosition == popPosition && isPushing == false)
+        if (isOn)
+            return;
+
+        if (!isPushing)
         {
             isPushing = true;
-            while (transform.localPosition != pickPosition)
+            if (transform.localPosition == popPosition)
             {
-                yield return new WaitForSeconds(0.01f);
-                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, pickPosition, buttonSpeed * Time.deltaTime);
-                //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
+                Coroutine pushOn = StartCoroutine(PushOn());
+            }
+            else if (transform.localPosition == pickPosition)
+            {
+                Coroutine pushOff = StartCoroutine(PushOff());
             }
         }
-        else if(transform.localPosition == pickPosition && isPushing == false)
-        {
-            while (transform.localPosition != popPosition)
-            {
-                isPushing = true;
-                yield return new WaitForSeconds(0.01f);
-                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
-                //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
-            }
-        }
-        yield return new WaitForSeconds(buttonDealy);
-        isPushing = false;
-
     }
+
+    public IEnumerator PushOn()
+    {
+       // isPushing = true;
+        while (transform.localPosition != pickPosition)
+        {
+            yield return new WaitForSeconds(0.01f);
+            this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, pickPosition, buttonSpeed * Time.deltaTime);
+            //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
+        }
+        isPushing = false;
+    }
+
+    public IEnumerator PushOff()
+    {
+        //isPushing = true;
+        while (transform.localPosition != popPosition)
+        {  
+            yield return new WaitForSeconds(0.01f);
+            this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
+            //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
+        }
+        isPushing = false;
+    }
+
+    //IEnumerator PushButton()
+    //{
+    //    if (!isPushing)
+    //    {
+    //        if (transform.localPosition == popPosition)
+    //        {
+    //            isPushing = true;
+    //            while (transform.localPosition != pickPosition)
+    //            {
+    //                yield return new WaitForSeconds(0.01f);
+    //                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, pickPosition, buttonSpeed * Time.deltaTime);
+    //                //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
+    //            }
+    //        }
+    //        else if (transform.localPosition == pickPosition)
+    //        {
+    //            while (transform.localPosition != popPosition)
+    //            {
+    //                isPushing = true;
+    //                yield return new WaitForSeconds(0.01f);
+    //                this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
+    //                //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
+    //            }
+    //        }
+    //    }
+    //    yield return new WaitForSeconds(buttonDealy);
+    //    isPushing = false;
+
+    //}
 
 
     //public void ButtonPosition()
