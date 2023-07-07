@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering.PostProcessing;
 
 enum STAMP //배열이나 리스트 인덱스용
 {
@@ -32,8 +34,8 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    [SerializeField] private HandUIController HandUI;
 
+    [SerializeField] private HandUIController HandUI;
 
     [SerializeField] private bool[] stampContentsFinish; //직접넣는거 아님 직렬화 뺄것
     public bool[] StampContentsFinish { get => stampContentsFinish; }
@@ -46,6 +48,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private QuizTrigger[] quizTriggers;
     //모든 벽화 대화 오브젝트 관리
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
+
+    [Header("포스트 프로세싱 관련")]
+    [SerializeField] LightMngr lightMngr;
+    [SerializeField] private Light DLight;
+    [SerializeField] private GameObject ppVolume;
+
+    Bloom bloom;
+    
 
     private void Awake()
     {
@@ -117,6 +127,21 @@ public class GameManager : MonoBehaviour
         if (HandUI != null)
         {
             HandUI.CollectStamp();
+        }
+
+        switch(lightMngr.RotationSwitch)
+        {
+            case 0:
+                DLight.transform.eulerAngles = new Vector3(50, -30, 0);
+                ppVolume.SetActive(false);
+                break;
+            case 1:
+                break;
+            case 2:
+                DLight.transform.eulerAngles = new Vector3(0, -30, 0);
+                ppVolume.SetActive(true);
+                break;
+            default: break;
         }
     }
 

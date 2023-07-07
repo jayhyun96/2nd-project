@@ -90,8 +90,11 @@ public class LightMngr : MonoBehaviour
     [SerializeField] private bool isRotate = false;
     //[Header("현재 작동중 확인")]
     //[SerializeField] float curRotationX = 0f;
+
     [Header("현재 진행도 | 오전 : 0 / 오후 : 1 / 밤 : 2")]
-    [SerializeField] float rotationSwitch = 0f;
+    [SerializeField] int rotationSwitch = 0;
+    public int RotationSwitch { get => rotationSwitch; }
+
     //[SerializeField] float compStartRotationY = 0f;
     //[SerializeField] float rotationResult = 0f;
 
@@ -154,7 +157,7 @@ public class LightMngr : MonoBehaviour
             if (skyboxExposure > dayboxExposure - 1f)
             {
                 RenderSettings.skybox = dayBox;
-
+                rotationSwitch = 0;
                 nightBox.SetFloat("_Exposure", 0f);
             }
 
@@ -186,7 +189,7 @@ public class LightMngr : MonoBehaviour
 
         }
         Debug.Log("rotate 2");
-        rotationSwitch = 0;
+    
 
         isRotate = false;
     }
@@ -203,6 +206,7 @@ public class LightMngr : MonoBehaviour
             if (skyboxExposure > noonboxExposure -1)
             {
                 RenderSettings.skybox = noonBox;
+                ++rotationSwitch;
                 dayBox.SetFloat("_Exposure", 1f);
             }
 
@@ -234,7 +238,7 @@ public class LightMngr : MonoBehaviour
             RenderSettings.skybox.SetFloat("_Rotation", skyboxRotate);
         }
         Debug.Log("rotate 0");
-        ++rotationSwitch;
+        
 
         isRotate = false;
     }
@@ -248,10 +252,10 @@ public class LightMngr : MonoBehaviour
             rotateDealy = rotateDealySpeed * Time.deltaTime;
             float skyboxExposure = RenderSettings.skybox.GetFloat("_Exposure");
 
-            if (skyboxExposure < 0.05f)
+            if (skyboxExposure < 0.04f)
             {
                 RenderSettings.skybox = nightBox;
-
+                ++rotationSwitch;
                 noonBox.SetFloat("_Exposure", 4f);
             }
 
@@ -286,7 +290,7 @@ public class LightMngr : MonoBehaviour
         }
         Debug.Log("rotate 1");
         rotateTimer = 0;
-        ++rotationSwitch;
+
 
         isRotate = false;
     }
