@@ -49,11 +49,7 @@ public class MinigameController : MonoBehaviour
     {
         if (!timing)
         {
-            if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
-            {
-                StartCoroutine(pushStartButtonAction.PushOff());
-                StartCoroutine(pushCompleteButtonAction.PushOff());
-            }
+
             return;
         }
 
@@ -92,12 +88,17 @@ public class MinigameController : MonoBehaviour
 
     private void CompleteGame(SelectEnterEventArgs args)
     {
-        if (pushCompleteButtonAction.isOn)
+        if (pushCompleteButtonAction.isOn || !pushStartButtonAction.isOn)
             return;
 
         CheckToggleGroup();
         if (allTag)
         {
+            if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+            {
+                StartCoroutine(pushStartButtonAction.PushOff());
+                StartCoroutine(pushCompleteButtonAction.PushOff());
+            }
             canvasOnOff.SetActive(false);
             timing = false;
             RecordTime();
