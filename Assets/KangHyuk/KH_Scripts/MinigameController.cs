@@ -47,22 +47,30 @@ public class MinigameController : MonoBehaviour
 
     private void Update()
     {
-        if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+        if (!timing)
         {
-            pushStartButtonAction.StartCo();
-            pushCompleteButtonAction.StartCo();
+            if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+            {
+                StartCoroutine(pushStartButtonAction.PushOff());
+                StartCoroutine(pushCompleteButtonAction.PushOff());
+            }
+            return;
         }
 
-        if (timing)
-        {
-            elapsedTime += Time.deltaTime;
-            UpdateTimerText();
-        }
+
+        elapsedTime += Time.deltaTime;
+        UpdateTimerText();
+
+
+
+
     }
 
     private void StartTimer(SelectEnterEventArgs args)
     {
-        Debug.Log("게임시작");
+        if (pushStartButtonAction.isOn)
+            return;
+
         if (timing)
         {
             return;
@@ -83,7 +91,9 @@ public class MinigameController : MonoBehaviour
 
     private void CompleteGame(SelectEnterEventArgs args)
     {
-        Debug.Log("게임종료");
+        if (pushCompleteButtonAction.isOn)
+            return;
+
         CheckToggleGroup();
         if (allTag)
         {
