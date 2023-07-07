@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MinigameController : MonoBehaviour
 {
     public GameObject canvasOnOff;
     public Canvas canvas;
-    public Button startButton;
-    public Button completeButton;
+    public GameObject startButton;
+    public GameObject completeButton;
+    private XRSimpleInteractable xrSimpleStartButton;
+    private XRSimpleInteractable xrSimpleCompleteButton;
+    private PushButtonAction pushStartButtonAction;
+    private PushButtonAction pushCompleteButtonAction;
+
     public TextMeshProUGUI timerTextstart;
     public TextMeshProUGUI timerTextend;
 
@@ -17,6 +23,14 @@ public class MinigameController : MonoBehaviour
     private float elapsedTime;
     private bool allTag;
 
+    private void Awake()
+    {
+        xrSimpleStartButton = startButton.GetComponent<XRSimpleInteractable>();
+        xrSimpleCompleteButton = completeButton.GetComponent<XRSimpleInteractable>();
+
+        pushStartButtonAction = startButton.GetComponent<PushButtonAction>();
+        pushCompleteButtonAction = completeButton.GetComponent<PushButtonAction>();
+    }
     private void Start()
     {
         canvasOnOff.SetActive(false);
@@ -25,12 +39,20 @@ public class MinigameController : MonoBehaviour
         timerTextstart.text = "00:00";  //초기 시간을 00:00으로 설정
         timerTextend.text = "00:00";
 
-        startButton.onClick.AddListener(StartTimer);
-        completeButton.onClick.AddListener(CompleteGame);
+        xrSimpleStartButton.selectEntered.AddListener(StartTimer);
+        xrSimpleCompleteButton.selectEntered.AddListener(CompleteGame);
+        //startButton.onClick.AddListener(StartTimer);
+        //completeButton.onClick.AddListener(CompleteGame);
     }
 
     private void Update()
     {
+        if (pushStartButtonAction.isOn && pushCompleteButtonAction.isOn)
+        {
+            pushStartButtonAction.StartCo();
+            pushCompleteButtonAction.StartCo();
+        }
+
         if (timing)
         {
             elapsedTime += Time.deltaTime;
@@ -38,10 +60,10 @@ public class MinigameController : MonoBehaviour
         }
     }
 
-    private void StartTimer()
+    private void StartTimer(SelectEnterEventArgs args)
     {
-        
-        if(timing)
+
+        if (timing)
         {
             return;
         }
@@ -59,7 +81,7 @@ public class MinigameController : MonoBehaviour
         timing = true;
     }
 
-    private void CompleteGame()
+    private void CompleteGame(SelectEnterEventArgs args)
     {
         CheckToggleGroup();
         if (allTag)

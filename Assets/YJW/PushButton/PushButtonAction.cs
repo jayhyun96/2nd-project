@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PushButtonAction : MonoBehaviour
 {
@@ -23,9 +24,10 @@ public class PushButtonAction : MonoBehaviour
     [Header("default: 1f")]
     [SerializeField, Range(0, 1f)] float buttonDealy = 0f;
 
-    [SerializeField] private bool isPick = false;
+    [SerializeField] private bool isPushing = false;
+    public bool isOn = false;
 
-
+     
     private void Awake()
     {
         popPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
@@ -41,9 +43,10 @@ public class PushButtonAction : MonoBehaviour
 
     IEnumerator PushButton()
     {
-        if (transform.localPosition == popPosition && isPick == false)
+        isOn = !(isOn);
+        if (transform.localPosition == popPosition && isPushing == false)
         {
-            isPick = true;
+            isPushing = true;
             while (transform.localPosition != pickPosition)
             {
                 yield return new WaitForSeconds(0.01f);
@@ -51,18 +54,18 @@ public class PushButtonAction : MonoBehaviour
                 //this.transform.position = Vector3.Lerp(transform.localPosition, pickPosition, lerpRange);
             }
         }
-        else if(transform.localPosition == pickPosition && isPick == false)
+        else if(transform.localPosition == pickPosition && isPushing == false)
         {
             while (transform.localPosition != popPosition)
             {
-                isPick = true;
+                isPushing = true;
                 yield return new WaitForSeconds(0.01f);
                 this.transform.localPosition = Vector3.MoveTowards(transform.localPosition, popPosition, buttonSpeed * Time.deltaTime);
                 //this.transform.position = Vector3.Lerp(transform.localPosition, popPosition, lerpRange);
             }
         }
         yield return new WaitForSeconds(buttonDealy);
-        isPick = false;
+        isPushing = false;
 
     }
 
