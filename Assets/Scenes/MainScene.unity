@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18937956, g: 0.5369456, b: 0.84190905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18938027, g: 0.53694606, b: 0.8419103, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5019,6 +5019,22 @@ PrefabInstance:
     - target: {fileID: 7974870699892023408, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
       propertyPath: m_Name
       value: Post-process Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974870699892023408, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974870699892023409, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
+      propertyPath: isGlobal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974870699892023409, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974870699892023409, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
+      propertyPath: blendDistance
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 7974870699892023411, guid: 3a9017c5e85a17c4f913bab4192cfc5d, type: 3}
       propertyPath: m_RootOrder
