@@ -19,6 +19,11 @@ public class AnimalMoveCtrl : MonoBehaviour
     [Header("회전 시간")]
     [SerializeField] private float rotationTime = 0f;
     [SerializeField] private float timeCount = 0f;
+    [SerializeField] private float idleTimeCount = 0f;
+
+    Vector3 rotateDirection = Vector3.zero;
+    Quaternion lookRotation = Quaternion.identity;
+    Quaternion targetRotation = Quaternion.identity;
 
     private void Awake()
     {
@@ -52,11 +57,26 @@ public class AnimalMoveCtrl : MonoBehaviour
 
     private void Update()
     {
+        if (!isMoving)
+        {
+            if (transform.rotation.y == targetRotation.y)
+            {
+                idleTimeCount = 0f;
+                return;
+            }
+
+            lookAtPosition = ((GameObject.FindGameObjectWithTag("MainCamera").transform.position));
+            idleTimeCount += Time.deltaTime;
+            rotateDirection = (lookAtPosition - this.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(rotateDirection);
+            targetRotation = Quaternion.Slerp(transform.rotation, lookRotation, idleTimeCount);
+            transform.rotation = new Quaternion(transform.rotation.x, targetRotation.y, transform.rotation.z, targetRotation.w);
+        }
         if (isMoving)
         {
             // 현재 웨이포인트
             Vector3 currentWaypointPosition = waypoints[currentWaypointIndex].position;
-            audioSource.transform.position = transform.position;
+            // audioSource.transform.position = transform.position;
 
             // 웨이포인트에 도착한 경우 이동 중지
             if (Vector3.Distance(transform.position, currentWaypointPosition) < 0.1f)
@@ -77,7 +97,8 @@ public class AnimalMoveCtrl : MonoBehaviour
                 timeCount += Time.deltaTime;
                 Vector3 rotateDirection = (currentWaypointPosition - this.transform.position).normalized;
                 Quaternion lookRotation = Quaternion.LookRotation(rotateDirection);
-                this.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, timeCount);
+                Quaternion targetRotation = Quaternion.Slerp(transform.rotation, lookRotation, timeCount);
+                transform.rotation = new Quaternion(transform.rotation.x, targetRotation.y, transform.rotation.z, targetRotation.w);
                 // transform.LookAt(currentWaypointPosition);
                 // 타겟 방향으로 회전함
                 //float angle = Mathf.Atan2(currentWaypointPosition.y, currentWaypointPosition.x) * Mathf.Rad2Deg;
@@ -89,12 +110,12 @@ public class AnimalMoveCtrl : MonoBehaviour
                     anim.curShapeState = "Eyes_Dead";
                     Vector3 direction = (currentWaypointPosition - transform.position).normalized;
                     transform.position += direction * speed * Time.deltaTime;
-    
+
                 }
             }
             //transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         }
-        
+
 
     }
 
@@ -102,6 +123,7 @@ public class AnimalMoveCtrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isMoving) { return; }
         if (currentWaypointIndex == waypoints.Count - 1)
             return;
 
