@@ -15,7 +15,10 @@ public class AnimalMoveCtrl : MonoBehaviour
 
     [SerializeField] private AnimalAnimationCtrl anim = null;
     private AudioSource audioSource;
-    public AudioClip[] catSounds;
+    public AudioClip[] animalSounds;
+    [Header("회전 시간")]
+    [SerializeField] private float rotationTime = 0f;
+    [SerializeField] private float timeCount = 0f;
 
     private void Awake()
     {
@@ -23,9 +26,9 @@ public class AnimalMoveCtrl : MonoBehaviour
         anim = GetComponent<AnimalAnimationCtrl>();
     }
 
-    public void CatSound()
+    public void AnimalSound()
     {
-      //  AudioSource.PlayClipAtPoint(catSounds[Random.Range(0, catSounds.Length - 1)], transform.position);
+        //  AudioSource.PlayClipAtPoint(animalSounds[Random.Range(0, animalSounds.Length - 1)], transform.position);
     }
     public void MoveToWaypointIndex()
     {
@@ -36,7 +39,7 @@ public class AnimalMoveCtrl : MonoBehaviour
         if (currentWaypointIndex >= 0 && currentWaypointIndex < waypoints.Count)
         {
 
-            CatSound();
+            AnimalSound();
             isMoving = true;
         }
         else
@@ -44,13 +47,11 @@ public class AnimalMoveCtrl : MonoBehaviour
             Debug.LogError("animal : 잘못된 웨이포인트 인덱스입니다.");
             return;
         }
-        
+
     }
 
     private void Update()
     {
-        transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform.position);
-
         if (isMoving)
         {
             // 현재 웨이포인트
@@ -60,25 +61,41 @@ public class AnimalMoveCtrl : MonoBehaviour
             // 웨이포인트에 도착한 경우 이동 중지
             if (Vector3.Distance(transform.position, currentWaypointPosition) < 0.1f)
             {
-                
+
                 isMoving = false;
-                CatSound();
+                AnimalSound();
                 anim.curAnimState = "Idle_A";
                 anim.curShapeState = "Eyes_Annoyed";
                 Debug.Log("도착!");
-
+                timeCount = 0;
 
             }
             else
-            { 
-                transform.LookAt(currentWaypointPosition);
-                // 웨이포인트로 이동
-                anim.curAnimState = "Run";
-                anim.curShapeState = "Eyes_Dead";
-                Vector3 direction = (currentWaypointPosition - transform.position).normalized;
-                transform.position += direction * speed * Time.deltaTime;
+            {
+
+                // 특정 지점을 향해 회전시킵니다.
+                timeCount += Time.deltaTime;
+                Vector3 rotateDirection = (currentWaypointPosition - this.transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(rotateDirection);
+                this.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, timeCount);
+                // transform.LookAt(currentWaypointPosition);
+                // 타겟 방향으로 회전함
+                //float angle = Mathf.Atan2(currentWaypointPosition.y, currentWaypointPosition.x) * Mathf.Rad2Deg;
+                //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                if (timeCount > rotationTime)
+                {
+                    // 웨이포인트로 이동
+                    anim.curAnimState = "Run";
+                    anim.curShapeState = "Eyes_Dead";
+                    Vector3 direction = (currentWaypointPosition - transform.position).normalized;
+                    transform.position += direction * speed * Time.deltaTime;
+    
+                }
             }
+            //transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         }
+        
+
     }
 
 
@@ -98,6 +115,7 @@ public class AnimalMoveCtrl : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             lookAtPosition = waypoints[currentWaypointIndex].position;
         }
     }
