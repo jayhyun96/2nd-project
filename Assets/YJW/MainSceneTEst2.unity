@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18938027, g: 0.53694606, b: 0.8419103, a: 1}
+  m_IndirectSpecularColor: {r: 0.18943119, g: 0.5369196, b: 0.841879, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3935,8 +3935,11 @@ MonoBehaviour:
   - {fileID: 1495681489}
   speed: 5
   currentWaypointIndex: 0
+  lookAtPosition: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
   catSounds: []
+  rotationTime: 0.5
+  timeCount: 0
 --- !u!82 &332768598
 AudioSource:
   m_ObjectHideFlags: 0
