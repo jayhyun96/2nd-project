@@ -15,7 +15,7 @@ public class AnimalMoveCtrl : MonoBehaviour
 
     [SerializeField] private AnimalAnimationCtrl anim = null;
     private AudioSource audioSource;
-    public AudioClip[] catSounds;
+    public AudioClip[] animalSounds;
     [Header("회전 시간")]
     [SerializeField] private float rotationTime = 0f;
     [SerializeField] private float timeCount = 0f;
@@ -26,9 +26,9 @@ public class AnimalMoveCtrl : MonoBehaviour
         anim = GetComponent<AnimalAnimationCtrl>();
     }
 
-    public void CatSound()
+    public void AnimalSound()
     {
-        //  AudioSource.PlayClipAtPoint(catSounds[Random.Range(0, catSounds.Length - 1)], transform.position);
+        //  AudioSource.PlayClipAtPoint(animalSounds[Random.Range(0, animalSounds.Length - 1)], transform.position);
     }
     public void MoveToWaypointIndex()
     {
@@ -39,7 +39,7 @@ public class AnimalMoveCtrl : MonoBehaviour
         if (currentWaypointIndex >= 0 && currentWaypointIndex < waypoints.Count)
         {
 
-            CatSound();
+            AnimalSound();
             isMoving = true;
         }
         else
@@ -63,7 +63,7 @@ public class AnimalMoveCtrl : MonoBehaviour
             {
 
                 isMoving = false;
-                CatSound();
+                AnimalSound();
                 anim.curAnimState = "Idle_A";
                 anim.curShapeState = "Eyes_Annoyed";
                 Debug.Log("도착!");
