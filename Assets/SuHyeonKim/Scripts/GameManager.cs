@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] List<AudioClip> bgmList;
     public List<AudioClip> BgmList { get => bgmList; }
-    AudioSource bgm;
+    private AudioSource bgm;
 
     private void Awake()
     {
