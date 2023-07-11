@@ -17,12 +17,22 @@ enum STAMP //배열이나 리스트 인덱스용
     SIZE
 }
 
+enum SKY
+{
+    ZERO,
+    DAY = 0,
+    EVENING,
+    NIGHT,
+    SIZE
+}
+
 enum BGM
 {
     ZERO,
     DAY = 0,
     EVENING,
     NIGHT,
+    RUNNING,
     SIZE
 }
 
@@ -63,6 +73,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
+    int skyNumber;
+
     [SerializeField] List<AudioClip> bgmList;
     AudioSource bgm;
 
@@ -70,7 +82,6 @@ public class GameManager : MonoBehaviour
     {
         quizTriggers = FindObjectsOfType<QuizTrigger>(); //게임 하이에라키에 있는 해당 스크립트를 가진 변수들을 저장
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
-        bgmList = new List<AudioClip>();
         bgm = gameObject.AddComponent<AudioSource>();
     }
 
@@ -80,6 +91,8 @@ public class GameManager : MonoBehaviour
 
         bestTime = float.PositiveInfinity;
         bestTimeText.text = "99:99";
+
+        skyNumber = (int)SKY.DAY;
 
     }
 
@@ -150,23 +163,26 @@ public class GameManager : MonoBehaviour
             HandUI.CollectStamp();
         }
 
-        switch(lightMngr.RotationSwitch)
+        if(lightMngr.RotationSwitch != skyNumber)
         {
-            case 0:
-                DLight.transform.eulerAngles = new Vector3(50, -30, 0);
-                ppVolume.SetActive(false);
-                PlayBGM(bgmList[(int)BGM.DAY]);
-                break;
-            case 1:
-                PlayBGM(bgmList[(int)BGM.EVENING]);
-                break;
-            case 2:
-                DLight.transform.eulerAngles = new Vector3(0, -30, 0);
-                ppVolume.SetActive(true);
-                PlayBGM(bgmList[(int)BGM.NIGHT]);
-                break;
-            default: break;
+            skyNumber = lightMngr.RotationSwitch;
+
+            switch (lightMngr.RotationSwitch)
+            {
+                case 0:
+                    DLight.transform.eulerAngles = new Vector3(50, -30, 0);
+                    ppVolume.SetActive(false);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    DLight.transform.eulerAngles = new Vector3(0, -30, 0);
+                    ppVolume.SetActive(true);
+                    break;
+                default: break;
+            }
         }
+        
     }
 
     public void StampClear(int stampIdx)

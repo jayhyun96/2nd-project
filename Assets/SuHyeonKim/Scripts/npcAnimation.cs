@@ -18,12 +18,10 @@ public class npcAnimation : MonoBehaviour
         {
             if(dial.activeSelf)
             {
-                Debug.Log("On");
                 animator.SetBool("Talk", true);
             }
             else
             {
-                Debug.Log("Off");
                 animator.SetBool("Talk", false);
             }
         }

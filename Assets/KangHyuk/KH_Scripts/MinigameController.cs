@@ -142,7 +142,7 @@ public class MinigameController : MonoBehaviour
         if (allTogglesChecked)
         {
             allTag = true;
-            Debug.Log("All toggles are checked.");
+            //Debug.Log("All toggles are checked.");
         }
         else
         {
