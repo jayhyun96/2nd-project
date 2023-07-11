@@ -44,7 +44,7 @@ public class MonorailController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("잘못된 웨이포인트 인덱스입니다.");
+            //Debug.LogError("잘못된 웨이포인트 인덱스입니다.");
             return;
         }
     }

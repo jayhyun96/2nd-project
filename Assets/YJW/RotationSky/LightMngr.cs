@@ -159,6 +159,7 @@ public class LightMngr : MonoBehaviour
                 RenderSettings.skybox = dayBox;
                 rotationSwitch = 0;
                 nightBox.SetFloat("_Exposure", 0f);
+                GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[rotationSwitch]);
             }
 
             if (RenderSettings.skybox == nightBox && rotateTimer > nightToDayboxChaneTime)
@@ -208,6 +209,7 @@ public class LightMngr : MonoBehaviour
                 RenderSettings.skybox = noonBox;
                 ++rotationSwitch;
                 dayBox.SetFloat("_Exposure", 1f);
+                GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[rotationSwitch]);
             }
 
             if (RenderSettings.skybox == dayBox && transform.eulerAngles.x < dayToNoonboxChaneDegree)
@@ -257,6 +259,7 @@ public class LightMngr : MonoBehaviour
                 RenderSettings.skybox = nightBox;
                 ++rotationSwitch;
                 noonBox.SetFloat("_Exposure", 4f);
+                GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[rotationSwitch]);
             }
 
             if (RenderSettings.skybox == noonBox)
