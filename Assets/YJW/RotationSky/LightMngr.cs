@@ -108,10 +108,7 @@ public class LightMngr : MonoBehaviour
 
         telescopeInteraction.selectEntered.AddListener(StartCo);
     }
-    private void Update()
-    {
-        // curRotationX = transform.eulerAngles.x; 
-    }
+
     public void StartCo()
     {
         Coroutine co = StartCoroutine(RotateLight());
