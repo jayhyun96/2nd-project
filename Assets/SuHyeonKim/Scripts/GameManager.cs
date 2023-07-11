@@ -17,6 +17,15 @@ enum STAMP //배열이나 리스트 인덱스용
     SIZE
 }
 
+enum BGM
+{
+    ZERO,
+    DAY = 0,
+    EVENING,
+    NIGHT,
+    SIZE
+}
+
 public class GameManager : MonoBehaviour
 {
 
@@ -54,13 +63,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
-    Bloom bloom;
-    
+    [SerializeField] List<AudioClip> bgmList;
+    AudioSource bgm;
 
     private void Awake()
     {
         quizTriggers = FindObjectsOfType<QuizTrigger>(); //게임 하이에라키에 있는 해당 스크립트를 가진 변수들을 저장
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
+        bgmList = new List<AudioClip>();
+        bgm = gameObject.AddComponent<AudioSource>();
     }
 
     private void Start()
@@ -68,8 +79,18 @@ public class GameManager : MonoBehaviour
         stampContentsFinish = new bool[(int)STAMP.SIZE]; //size is 5
 
         bestTime = float.PositiveInfinity;
-        bestTimeText.text = "99:99";           
+        bestTimeText.text = "99:99";
 
+    }
+
+    public void PlayBGM(AudioClip bgmClip)
+    {
+        if (bgmList.Count <= 0) return;
+        else
+        {
+            bgm.clip = bgmClip;
+            bgm.Play();
+        }
     }
 
 
@@ -134,12 +155,15 @@ public class GameManager : MonoBehaviour
             case 0:
                 DLight.transform.eulerAngles = new Vector3(50, -30, 0);
                 ppVolume.SetActive(false);
+                PlayBGM(bgmList[(int)BGM.DAY]);
                 break;
             case 1:
+                PlayBGM(bgmList[(int)BGM.EVENING]);
                 break;
             case 2:
                 DLight.transform.eulerAngles = new Vector3(0, -30, 0);
                 ppVolume.SetActive(true);
+                PlayBGM(bgmList[(int)BGM.NIGHT]);
                 break;
             default: break;
         }
