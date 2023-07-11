@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         bestTime = float.PositiveInfinity;
         bestTimeText.text = "99:99";
         ppVolume.SetActive(false);
+        GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[lightMngr.RotationSwitch]);
 
     }
 
