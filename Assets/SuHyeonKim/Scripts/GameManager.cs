@@ -73,9 +73,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
-    int skyNumber;
-
     [SerializeField] List<AudioClip> bgmList;
+    public List<AudioClip> BgmList { get => bgmList; }
     AudioSource bgm;
 
     private void Awake()
@@ -91,8 +90,7 @@ public class GameManager : MonoBehaviour
 
         bestTime = float.PositiveInfinity;
         bestTimeText.text = "99:99";
-
-        skyNumber = (int)SKY.DAY;
+        ppVolume.SetActive(false);
 
     }
 
@@ -163,26 +161,20 @@ public class GameManager : MonoBehaviour
             HandUI.CollectStamp();
         }
 
-        if(lightMngr.RotationSwitch != skyNumber)
+        switch (lightMngr.RotationSwitch)
         {
-            skyNumber = lightMngr.RotationSwitch;
-
-            switch (lightMngr.RotationSwitch)
-            {
-                case 0:
-                    DLight.transform.eulerAngles = new Vector3(50, -30, 0);
-                    ppVolume.SetActive(false);
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    DLight.transform.eulerAngles = new Vector3(0, -30, 0);
-                    ppVolume.SetActive(true);
-                    break;
-                default: break;
-            }
+            case 0:
+                DLight.transform.eulerAngles = new Vector3(50, -30, 0);
+                ppVolume.SetActive(false);
+                break;
+            case 1:
+                break;
+            case 2:
+                DLight.transform.eulerAngles = new Vector3(0, -30, 0);
+                ppVolume.SetActive(true);
+                break;
+            default: break;
         }
-        
     }
 
     public void StampClear(int stampIdx)
