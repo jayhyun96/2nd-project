@@ -188,7 +188,7 @@ public class LightMngr : MonoBehaviour
             RenderSettings.skybox.SetFloat("_Rotation", skyboxRotate);
 
         }
-        Debug.Log("rotate 2");
+        //Debug.Log("rotate 2");
     
 
         isRotate = false;
@@ -237,7 +237,7 @@ public class LightMngr : MonoBehaviour
             skyboxRotate += 1f;
             RenderSettings.skybox.SetFloat("_Rotation", skyboxRotate);
         }
-        Debug.Log("rotate 0");
+        //Debug.Log("rotate 0");
         
 
         isRotate = false;
@@ -288,7 +288,7 @@ public class LightMngr : MonoBehaviour
 
 
         }
-        Debug.Log("rotate 1");
+        //Debug.Log("rotate 1");
         rotateTimer = 0;
 
 
