@@ -5,7 +5,9 @@ using UnityEngine;
 public class npcAnimation : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] GameObject dial;
+
+    [Header("NPC가 가진 Canvas의 자식 ui를 넣으시오")]
+    [SerializeField] private GameObject dial;
 
     private void Awake()
     {
