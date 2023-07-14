@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         bestTime = float.PositiveInfinity;
         bestTimeText.text = "99:99";
         ppVolume.SetActive(false);
-        PlayBGM(GameManager.Instance.BgmList[lightMngr.RotationSwitch]);
+        PlayBGM(BgmList[lightMngr.RotationSwitch]);
 
     }
 
@@ -164,13 +164,13 @@ public class GameManager : MonoBehaviour
 
         switch (lightMngr.RotationSwitch)
         {
-            case 0:
+            case (int)SKY.DAY:
                 DLight.transform.eulerAngles = new Vector3(50, -30, 0);
                 ppVolume.SetActive(false);
                 break;
-            case 1:
+            case (int)SKY.EVENING:
                 break;
-            case 2:
+            case (int)SKY.NIGHT:
                 DLight.transform.eulerAngles = new Vector3(0, -30, 0);
                 ppVolume.SetActive(true);
                 break;
