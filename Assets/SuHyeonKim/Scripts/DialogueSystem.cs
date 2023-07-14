@@ -26,7 +26,7 @@ public class DialogueSystem : MonoBehaviour
         isTyping = false;
     }
 
-    public void Begin(Dialogue info, DialogueTrigger dialogueTrigger)
+    public void Begin(DialogueTrigger dialogueTrigger)
     {
         lastCalled = dialogueTrigger;
 
@@ -34,9 +34,9 @@ public class DialogueSystem : MonoBehaviour
 
         sentences.Clear();
 
-        txtName.text = info.name;
+        txtName.text = dialogueTrigger.name;
 
-        foreach(var sentence in info.sentences)
+        foreach(var sentence in dialogueTrigger.info.sentences)
         {
             sentences.Enqueue(sentence);
         }

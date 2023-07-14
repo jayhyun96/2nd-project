@@ -36,7 +36,7 @@ public class QuizSystem : MonoBehaviour
         Init();
     }    
 
-    public void Begin(Quiz info, QuizTrigger quizTrigger)
+    public void Begin(QuizTrigger quizTrigger)
     {
         lastCalled = quizTrigger;
 
@@ -46,14 +46,14 @@ public class QuizSystem : MonoBehaviour
 
         sentences.Clear();
 
-        txtName.text = info.name;
+        txtName.text = quizTrigger.info.name;
 
-        foreach (var sentence in info.sentences)
+        foreach (var sentence in quizTrigger.info.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
-        answerCheck = info;
+        answerCheck = quizTrigger.info;
 
         Next();
     }
