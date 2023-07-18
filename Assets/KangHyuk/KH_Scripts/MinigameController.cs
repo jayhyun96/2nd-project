@@ -89,8 +89,6 @@ public class MinigameController : MonoBehaviour
         }
 
         timing = true;
-
-        GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[(int)BGM.RUNNING]);
     }
 
     private void CompleteGame(SelectEnterEventArgs args)
@@ -104,7 +102,6 @@ public class MinigameController : MonoBehaviour
             timing = false;
             RecordTime();
             GameManager.Instance.StampClear((int)STAMP.TIMEATTACK);
-            GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[GameManager.Instance.LightMngr.RotationSwitch]);
         }
         else
         {
