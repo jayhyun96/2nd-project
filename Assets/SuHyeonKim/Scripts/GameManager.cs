@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     [Header("포스트 프로세싱 관련")]
     [SerializeField] LightMngr lightMngr;
-    public LightMngr LightMngr { get => lightMngr; }
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
@@ -206,6 +205,11 @@ public class GameManager : MonoBehaviour
     public void StampClear(int stampIdx)
     {
         stampContentsFinish[stampIdx] = true;
+    }
+
+    public void GameQuit()
+    {
+        Application.Quit();
     }
 }
 
