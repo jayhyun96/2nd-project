@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 enum STAMP //배열이나 리스트 인덱스용
 {
@@ -82,6 +83,18 @@ public class GameManager : MonoBehaviour
         quizTriggers = FindObjectsOfType<QuizTrigger>(); //게임 하이에라키에 있는 해당 스크립트를 가진 변수들을 저장
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
         bgm = gameObject.AddComponent<AudioSource>();
+
+        //npc들 배열 순서정렬
+        Array.Sort(quizTriggers, (a, b) =>
+        {
+            return a.transform.GetSiblingIndex().CompareTo(b.transform.GetSiblingIndex());
+        });
+
+        Array.Sort(dialogueTriggers, (a, b) =>
+        {
+            return a.transform.GetSiblingIndex().CompareTo(b.transform.GetSiblingIndex());
+        });
+
     }
 
     private void Start()
