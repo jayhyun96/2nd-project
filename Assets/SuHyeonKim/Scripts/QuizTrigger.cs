@@ -172,14 +172,14 @@ public class QuizTrigger : MonoBehaviour
     {
         cleared = true;
 
-        Invoke("ReadAfterDisapear", 5.0f);
+        Invoke("ReadAfterDisapear", 8.0f);
     }
 
     public void ReadAfterDisapear()
     {
         gameObject.SetActive(false);
 
-        if (nextTrigger == null) //마지막 npc는 없음
+        if (nextTrigger == null) //마지막 npc는 nextTrigger 없음
             return;
 
         nextTrigger.SetActive(true);
