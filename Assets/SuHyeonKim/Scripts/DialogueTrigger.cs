@@ -118,7 +118,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         read = true;
 
-        Invoke("ReadAfterDisapear", 10);
+        Invoke("ReadAfterDisapear", 8.0f);
     }
 
     public void ReadAfterDisapear()
