@@ -255,7 +255,7 @@ public class LightMngr : MonoBehaviour
             {
                 RenderSettings.skybox = nightBox;
                 ++rotationSwitch;
-                noonBox.SetFloat("_Exposure", 4f);
+                noonBox.SetFloat("_Exposure", 0f);
                 GameManager.Instance.PlayBGM(GameManager.Instance.BgmList[rotationSwitch]);
             }
 
