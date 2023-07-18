@@ -186,8 +186,4 @@ public class QuizTrigger : MonoBehaviour
         nextTrigger.SetActive(true);
     }
 
-    public void GameQuit()
-    {
-        Application.Quit();
-    }
 }
