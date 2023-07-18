@@ -1642,18 +1642,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    name: "\uBB38\uC81C1"
+    name: "\uC5EC\uC790\uC544\uC774"
     sentences:
-    - "\uAC00\uACE1 \u2018\uAE30\uB2E4\uB9AC\uB294 \uB9C8\uC74C\u2019\uC744 \uC791\uC0AC\uD55C
-      \uAE40\uBBFC\uBD80 \uC2DC\uC778\uC758 \uC804\uB9DD\uB300\uB294 \uBD80\uC0B0\uD56D\uC744
-      \uC870\uB9DD\uD558\uAE30 \uB354\uC5C6\uC774 \uC88B\uC740 \uC7A5\uC18C\uB85C
-      \uACBD\uCE58\uAC00 \uC544\uB984\uB2F5\uAE30\uB85C \uC720\uBA85\uD558\uB2E4"
-    - "\uC815\uB2F5!"
-    - "\uC624\uB2F5..."
-    Answer: 0
+    - "\uC5EC\uAE30 \uC62C\uB77C\uC624\uB294 \uAC8C \uC26C\uC6CC\uC9C0\uACE0 \uC7AC\uBC0C\uC5B4\uC84C\uC5B4\uC694!
+      \uADF8\uB7FC \uB2E4\uC74C \uBB38\uC81C!  168\uACC4\uB2E8\uC740 \uC0B0 \uC717\uB3D9\uB124\uC640
+      \uC0B0 \uC544\uB7AB\uB3D9\uB124\uB97C \uBC14\uB85C \uC774\uC5B4\uC8FC\uB294
+      \uC720\uC77C\uD55C \uAE38 \uC77C\uAE4C\uC694?"
+    - "\uC815\uB2F5! \uBC14\uB85C \uC774\uC5B4\uC9C0\uB294 \uC720\uC77C\uD55C \uAE38\uC774\uB77C\uB294
+      \uC124\uBA85\uC774 \uD648\uD398\uC774\uC9C0\uC5D0 \uB098\uC640\uC788\uC5B4\uC694!"
+    - "\uB561! \uBB38\uC81C\uB97C \uB2E4\uC2DC \uB9DE\uCDB0 \uC8FC\uC138\uC694!"
+    Answer: 1
   quizObj: {fileID: 3857860223477712249}
   txtName: {fileID: 3857860222195675121}
   txtSentence: {fileID: 3857860223542267253}
+  nextTrigger: {fileID: 0}
 --- !u!114 &2468731576462504737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,7 +2217,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3857860223088392053
@@ -2490,7 +2492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3857860223477712250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2741,7 +2743,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3950444757696183761
