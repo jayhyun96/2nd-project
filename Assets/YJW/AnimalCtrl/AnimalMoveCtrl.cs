@@ -86,7 +86,7 @@ public class AnimalMoveCtrl : MonoBehaviour
                 AnimalSound();
                 anim.curAnimState = "Idle_A";
                 anim.curShapeState = "Eyes_Annoyed";
-                Debug.Log("µµÂø!");
+                //Debug.Log("µµÂø!");
                 timeCount = 0;
 
             }

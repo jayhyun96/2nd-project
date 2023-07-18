@@ -118,7 +118,8 @@ public class QuizTrigger : MonoBehaviour
     {
         if (!answerCheck.Answer.Equals(answer)) //정답이 아니면
         {
-            sentences.Dequeue();
+            if (sentences.Count != 0)
+                sentences.Dequeue();
         }
         else //정답이면
         {
