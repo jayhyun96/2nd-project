@@ -9,8 +9,6 @@ public class QuizTrigger : MonoBehaviour
 
     public Quiz info;
 
-    [Header("퀴즈 시스템을 넣으시오")]
-    //[SerializeField] private QuizSystem quiz;
     private bool cleared;
     public bool Cleared { get => cleared; }
 
@@ -30,6 +28,8 @@ public class QuizTrigger : MonoBehaviour
     private Quiz answerCheck;
     private string deqSentence;
 
+    [Header("다음에 보여줄 퀴즈npc 설정")]
+    [SerializeField] GameObject nextTrigger;
 
     private void Init()
     {
@@ -171,5 +171,17 @@ public class QuizTrigger : MonoBehaviour
     public void SetCleared()
     {
         cleared = true;
+
+        Invoke("ReadAfterDisapear", 5.0f);
+    }
+
+    public void ReadAfterDisapear()
+    {
+        gameObject.SetActive(false);
+
+        if (nextTrigger == null) //마지막 npc는 없음
+            return;
+
+        nextTrigger.SetActive(true);
     }
 }

@@ -7,8 +7,6 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue info;
 
-    [Header("다이얼로그 시스템을 넣으시오")]
-    //[SerializeField] private DialogueSystem dial;
     private bool read;
     public bool Read { get => read; }
 
@@ -25,7 +23,9 @@ public class DialogueTrigger : MonoBehaviour
 
     private string deqSentence;
 
-    //private DialogueTrigger lastCalled;
+    [Header("다음에 보여줄 대화 npc 설정")]
+    [SerializeField] GameObject nextTrigger;
+
 
     private void Start()
     {
@@ -117,5 +117,17 @@ public class DialogueTrigger : MonoBehaviour
     public void SetRead()
     {
         read = true;
+
+        Invoke("ReadAfterDisapear", 10);
+    }
+
+    public void ReadAfterDisapear()
+    {
+        gameObject.SetActive(false);
+
+        if (nextTrigger == null) //마지막 npc는 nextTrigger 없음
+            return;
+
+        nextTrigger.SetActive(true);
     }
 }
