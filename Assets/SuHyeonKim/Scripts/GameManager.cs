@@ -89,8 +89,6 @@ public class GameManager : MonoBehaviour
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
         bgm = gameObject.AddComponent<AudioSource>();
 
-        InitActiveFalseNpc = new List<GameObject>();
-
         //npc들 배열 순서정렬
         Array.Sort(quizTriggers, (a, b) =>
         {
@@ -113,14 +111,14 @@ public class GameManager : MonoBehaviour
         ppVolume.SetActive(false);
         PlayBGM(BgmList[lightMngr.RotationSwitch]);
 
-        ActiveFalseNpcInStart();
+        ActiveFalseNpc();
     }
 
-    void ActiveFalseNpcInStart()
+    void ActiveFalseNpc()
     {
-        foreach(GameObject npc in InitActiveFalseNpc)
+        for(int i = 0; i < InitActiveFalseNpc.Count; ++i)
         {
-            npc.SetActive(false);
+            InitActiveFalseNpc[i].SetActive(false);
         }
     }
 
