@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//지금은 사용하지 않음
 public class DialogueSystem : MonoBehaviour
 {
     [Header("각 Canvas 자식의 Dialougue를 켜고 끄기위함")]

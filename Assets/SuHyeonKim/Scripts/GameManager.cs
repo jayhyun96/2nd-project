@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
+    [Header("À½¾Ç ¾ÆÄ§ Àú³á ¹ã ²ø¾î´Ù ³õ±â")]
     [SerializeField] List<AudioClip> bgmList;
     public List<AudioClip> BgmList { get => bgmList; }
     private AudioSource bgm;

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
+//지금은 사용하지 않음
 public class QuizSystem : MonoBehaviour
 {
     [Header("각 Canvas 자식의 Quiz를 켜고 끄기위함")]
