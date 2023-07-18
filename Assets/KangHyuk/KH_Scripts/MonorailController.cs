@@ -113,7 +113,7 @@ public class MonorailController : MonoBehaviour
                 AudioSource.PlayClipAtPoint(dingdong, transform.position);
                 monorailAnim.SetBool("IsMoving", false);
                 doorAnim.SetBool("isOpen", true);
-                Debug.Log("µµÂø!");
+                //Debug.Log("µµÂø!");
                 Invoke("CloseDoor", 4f);
                 Invoke("doorSound", 4f);
             }
