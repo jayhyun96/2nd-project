@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     [Header("포스트 프로세싱 관련")]
     [SerializeField] LightMngr lightMngr;
+    public LightMngr LightMngr { get => lightMngr; }
     [SerializeField] private Light DLight;
     [SerializeField] private GameObject ppVolume;
 
@@ -145,7 +146,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //stampContentsFinish[(int)STAMP.QUIZ] = true; //퀴즈 스탬프 조건 만족
         StampClear((int)STAMP.QUIZ);
     }
 
@@ -162,7 +162,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //stampContentsFinish[(int)STAMP.DIALOGUE] = true;
         StampClear((int)STAMP.DIALOGUE);
     }
 
