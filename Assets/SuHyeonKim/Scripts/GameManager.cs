@@ -80,11 +80,16 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> BgmList { get => bgmList; }
     private AudioSource bgm;
 
+    [Header("대화, 퀴즈 npc 2,3,4 끄기 위한 것")]
+    [SerializeField] private List<GameObject> InitActiveFalseNpc; 
+
     private void Awake()
     {
         quizTriggers = FindObjectsOfType<QuizTrigger>(); //게임 하이에라키에 있는 해당 스크립트를 가진 변수들을 저장
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
         bgm = gameObject.AddComponent<AudioSource>();
+
+        InitActiveFalseNpc = new List<GameObject>();
 
         //npc들 배열 순서정렬
         Array.Sort(quizTriggers, (a, b) =>
@@ -108,6 +113,15 @@ public class GameManager : MonoBehaviour
         ppVolume.SetActive(false);
         PlayBGM(BgmList[lightMngr.RotationSwitch]);
 
+        ActiveFalseNpcInStart();
+    }
+
+    void ActiveFalseNpcInStart()
+    {
+        foreach(GameObject npc in InitActiveFalseNpc)
+        {
+            npc.SetActive(false);
+        }
     }
 
     public void PlayBGM(AudioClip bgmClip)
